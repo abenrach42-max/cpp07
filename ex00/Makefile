@@ -10,7 +10,7 @@ HEADERS = whatever.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADERS)
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.cpp
