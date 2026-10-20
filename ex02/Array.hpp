@@ -27,12 +27,12 @@ class   Array
     public:
         Array(void);
         Array(unsigned int n);
-        Array(const Array &src);
-        Array   &operator=(const Array &src);
+        Array(const Array<T> &src);
+        Array<T>   &operator=(const Array<T> &src);
         T   &operator[](int idx);
         T   &operator=(T &elt);
         ~Array(void);
-        unsigned int size(void) const {return this->_size; };
+        unsigned int size(void) const;
 };
 
 # include "Array.tpp"

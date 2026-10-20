@@ -18,6 +18,31 @@ Array<T>::Array(void)
 }
 
 template<typename T>
+Array<T>::Array(const Array<T> &src)
+{
+    *this = src;
+}
+
+template<typename T>
+Array<T>   &Array<T>::operator=(const Array<T> &src)
+{
+    if (this != &src)
+    {
+        delete[] this->_tab_elt;
+        this->_size = src._size;
+        if (this->_size > 0)
+        {
+            this->_tab_elt = new T[this->_size]();
+            for (int i = 0; i < src._size; i++)
+                this->_tab_elt[i] = src._tab_elt[i];
+        }
+        else
+            this->_tab_elt = NULL;
+    }
+    return (*this);
+}
+
+template<typename T>
 Array<T>::Array(unsigned int n)
 {
     this->_tab_elt = new T[n]();
@@ -36,6 +61,12 @@ template<typename T>
 T   &Array<T>::operator=(T &elt)
 {
     this = elt;
+}
+
+template<typename T>
+unsigned int    Array<T>::size(void) const
+{
+    return (this->_size);
 }
 
 template<typename T>
